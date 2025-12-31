@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <>
       <TerminalPanel
-        avatarUrl="/avatar.jpg"   
+        avatarUrl="avatar.jpg"   
         name={profile.name}
         subtitle={`${profile.major} @ ${profile.school} · Minor in ${profile.minor}`}
         email={profile.email}
