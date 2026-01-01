@@ -8,13 +8,14 @@ import { buildKnowledgeBase } from "@/data/knowledgeBase";
 //const API_URL = "https://benbot-backend.onrender.com/chat";
 //const API_URL = "http://localhost:8000/chat";
 
+
 const API_URL =
   process.env.NODE_ENV === "production"
     ? "https://benbot-backend.onrender.com/chat"
     : "http://localhost:8000/chat";
 
 
-
+    
 type Msg = { role: "user" | "assistant"; content: string };
 
 export default function ChatWidget() {
