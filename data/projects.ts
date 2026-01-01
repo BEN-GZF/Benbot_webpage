@@ -36,7 +36,7 @@ export const projects = [
     oneLiner:
       "Minimal personal site + an embedded agent that answers questions about my background with grounded, linkable sources.",
     links: [
-      { label: "GitHub", href: "https://github.com/BEN-GZF" },
+      { label: "GitHub", href: "https://ben-gzf.github.io/Benbot_webpage/" },
     ],
     details: [
       "Migrating my personal website from Hugo to Next.js for better customization and a modern component-based UI.",
