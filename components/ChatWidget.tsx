@@ -15,7 +15,7 @@ const API_URL =
     : "http://localhost:8000/chat";
 
 
-    
+
 type Msg = { role: "user" | "assistant"; content: string };
 
 export default function ChatWidget() {
@@ -99,7 +99,7 @@ export default function ChatWidget() {
                 <div className="text-zinc-500">
                   {m.role === "user" ? "> you" : "> benbot"}
                 </div>
-                <div className="whitespace-pre-wrap text-zinc-200"><LinkifyText text = {m.content}/> </div>
+                <div className="whitespace-pre-wrap text-zinc-200"><LinkifyText text={m.content} linkifyResumeWord={m.role === "assistant"} /> </div>
               </div>
             ))}
             <div ref={bottomRef} />

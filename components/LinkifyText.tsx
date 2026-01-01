@@ -2,7 +2,13 @@
 
 const RESUME_URL = "https://ben-gzf.github.io/Benbot_webpage/resume.pdf";
 
-export function LinkifyText({ text }: { text: string }) {
+export function LinkifyText({
+  text,
+  linkifyResumeWord = false,
+}: {
+  text: string;
+  linkifyResumeWord?: boolean;
+}) {
   const urlRegex = /(https?:\/\/[^\s]+|\/[^\s]+)/g;
   const parts = text.split(urlRegex);
 
@@ -14,6 +20,8 @@ export function LinkifyText({ text }: { text: string }) {
   }
 
   function linkifyResumeWords(s: string) {
+    if (!linkifyResumeWord) return <span>{s}</span>;
+
     const wordRegex = /\bresume\b/gi;
     const chunks = s.split(wordRegex);
     if (chunks.length === 1) return <span>{s}</span>;
@@ -39,25 +47,30 @@ export function LinkifyText({ text }: { text: string }) {
     );
   }
 
+  function toHref(cleaned: string) {
+    if (cleaned === "/resume.pdf" || cleaned.endsWith("/resume.pdf")) {
+      return RESUME_URL;
+    }
+    if (cleaned.startsWith("http://") || cleaned.startsWith("https://")) {
+      return cleaned;
+    }
+    return new URL(cleaned, window.location.origin).toString();
+  }
+
   return (
     <span>
       {parts.map((part, i) => {
         if (!part) return null;
 
         const cleaned = cleanLink(part);
-
         const isLink =
           cleaned.startsWith("http://") ||
           cleaned.startsWith("https://") ||
           cleaned.startsWith("/");
 
-        if (!isLink) {
-          return <span key={i}>{linkifyResumeWords(part)}</span>;
-        }
+        if (!isLink) return <span key={i}>{linkifyResumeWords(part)}</span>;
 
-        const href = cleaned.startsWith("/")
-          ? new URL(cleaned, window.location.origin).toString()
-          : cleaned;
+        const href = toHref(cleaned);
 
         return (
           <a
