@@ -13,7 +13,7 @@ export default function Page() {
         email={profile.email}
         github={profile.github}
         meshDemo={profile.meshDemo}
-        resumeUrl="/resume.pdf"
+        resumeUrl="resume.pdf"
         projects={projects}
         meshGithub={profile.meshGithub}
       />
