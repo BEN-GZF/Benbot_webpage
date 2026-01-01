@@ -6,7 +6,7 @@ export const profile = {
     gradYear: "2026",
     email: "zhefan.guo@uconn.edu",
     github: "https://github.com/BEN-GZF",
-    resume: "/resume.pdf",
+    resume: "resume.pdf",
 
     // 3D Mesh
     meshDemo: "https://sdp52-3d-mesh-generation.vercel.app/",
